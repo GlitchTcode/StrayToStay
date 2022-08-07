@@ -1,0 +1,22 @@
+﻿@model IQueryable<Post>
+@{
+    ViewData["Title"] = "Search Page";
+}
+
+
+<h1>Search</h1>
+
+<form asp-controller="Home" asp-action="Search" method="get">
+    <p>
+        Filter Results: <input type="text" name="FilterString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+@foreach (var p in Model ?? Enumerable.Empty<Post>()){
+    <div>
+        <h3>@p.Title</h3>
+        @p.Breed
+        <h4></h4>
+    </div>
+    }

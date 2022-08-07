@@ -1,0 +1,37 @@
+﻿@model IEnumerable<StrayToStay.Models.Post>
+
+@{
+    ViewData["Title"] = "Current Listings";
+}
+
+<h1>Current Listings</h1>
+
+<p>
+    @if(User.Identity.Name != null){
+        <a asp-action="Create">Create New</a>
+    }
+</p>
+<form asp-controller="Post" asp-action="Index">
+    <p>
+        Filter Results: <input type="text" name="SearchString" />
+        <input class="btn btn-info" type="submit" value="Filter" />
+        <input class="btn btn-success" type="submit" value="Clear" />
+    </p>
+</form>
+
+@foreach (var stray in Model) {
+ 
+    <div class="card card-outline-primary m-1 p-1">
+        <div class="bg-faded p-1">
+            <h4>
+             <a asp-action="Details" asp-route-id="@stray.Id">@stray.Title</a>
+                <span class="badge rounded-pill bg-info text-white" style="float:right">
+                    <small>@stray.Breed</small>
+                </span>
+            </h4>
+            <small><em>Posted on: @stray.Date</em></small>
+        </div>
+        <div class="card-text p-1">@stray.Description</div>
+    </div>
+
+}

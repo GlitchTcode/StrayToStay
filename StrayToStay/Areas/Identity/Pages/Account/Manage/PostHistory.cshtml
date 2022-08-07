@@ -1,0 +1,64 @@
+﻿@page
+@model StrayToStay.Areas.Identity.Pages.Account.Manage.PostHistoryModel
+
+@{
+    ViewData["Title"] = "PostHistory";
+}
+
+<h1>PostHistory</h1>
+
+@*<p>
+    <a asp-page="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Post[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Post[0].Breed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Post[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Post[0].Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Post) {
+            @if (item.UserName == User.Identity.Name)
+            {
+                <tr>
+               
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Breed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td> 
+                <button type="button" class="btn btn-primary">
+                <a asp-controller="Post" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </button>
+                 <button type="button" class="btn btn-secondary">
+                <a asp-controller="Post" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </button>
+                 <button type="button" class="btn btn-danger">
+                <a asp-controller="Post" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </button>
+            </td>
+        </tr>
+        }
+}
+    </tbody>
+</table>
