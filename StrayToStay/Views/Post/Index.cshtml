@@ -8,7 +8,9 @@
 
 <p>
     @if(User.Identity.Name != null){
-        <a asp-action="Create">Create New</a>
+        <button type="button" class="btn btn-success">
+        <a asp-action="Create" style="text-decoration:none; color: white">Create New Listing</a>
+        </button>
     }
 </p>
 <form asp-controller="Post" asp-action="Index">

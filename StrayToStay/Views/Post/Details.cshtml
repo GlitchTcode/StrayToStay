@@ -23,16 +23,23 @@
   </div>
   <div class="card-body bg-white" >
      @if(Model.UserName == User.Identity.Name){
-        <button type="button" class="btn btn-primary">
-            <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+        <button type="button" class="btn btn-primary" >
+            <a asp-action="Edit" asp-route-id="@Model?.Id" style="text-decoration:none">Edit</a>
         </button>
         <button type="button" class="btn btn-danger">
-        <a asp-action="Delete" asp-route-id="@Model?.Id">Delete</a>
+        <a asp-action="Delete" asp-route-id="@Model?.Id" style="text-decoration:none">Delete</a>
         </button>
     }
-    <button type="button" class="btn btn-secondary">
-    <a asp-action="Index">Back to List</a>
+    <button type="button" class="btn btn-secondary" >
+    <a asp-action="Index" style="text-decoration:none">Back to List</a>
     </button>
-  </div>
+        @if(User.Identity.Name != null)
+        {
+            <button type="button" class="btn btn-info" >
+            <a asp-action="Index" style="text-decoration:none">Contact</a>
+            </button>
+            
+        }
+    </div>
 </div>
 
